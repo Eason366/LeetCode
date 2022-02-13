@@ -6,6 +6,7 @@ public class leetcode283 {
         moveZero(nums);
         for (int n :nums) {
             System.out.println(n);
+
         }
     }
 

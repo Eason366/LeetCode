@@ -6,6 +6,7 @@ public class leetcode27 {
         int[] nums = new int[]{0,1,2,2,3,0,4,2}; // Input array
         int val = 2; // Value to remove
 
+
         int k = removeElement2(nums, val); // Calls your implementation
         System.out.println(k);
     }
