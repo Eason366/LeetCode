@@ -1,31 +1,26 @@
 package com;
 
 public class leetcode283 {
-
+    private static int[] nums = new int[] {1,0};
     public static void main(String[] args) {
-        int[] nums = new int[] {1,0};
-
-
-
-
-        int zero = 0;
-        for (int i=0; i<nums.length;i++){
-            if(nums[zero]!=0) zero++;
-            if(nums[i]!=0 && i>zero) {
-                int temp = nums[zero];
-                nums[zero]=nums[i];
-                nums[i]=temp;
-            }
-        }
-
-
-
+        moveZero(nums);
         for (int n :nums) {
             System.out.println(n);
         }
     }
 
-
+    private static void moveZero(int[] nums) {
+        int index = 0;
+        for(int i = 0; i<nums.length;i++){
+            if(nums[i]!=0) {
+                if(index!=i){
+                    nums[index] = nums[i];
+                    nums[i] = 0;
+                }
+            }
+            if(nums[index]!=0) index++;
+        }
+    }
 
 
 }

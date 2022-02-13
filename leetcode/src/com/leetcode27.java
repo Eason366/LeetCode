@@ -3,13 +3,26 @@ package com;
 public class leetcode27 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1}; // Input array
-        int val = 1; // Value to remove
-        int[] expectedNums = {2,2}; // The expected answer with correct length.
-        // It is sorted with no values equaling val.
+        int[] nums = new int[]{0,1,2,2,3,0,4,2}; // Input array
+        int val = 2; // Value to remove
 
-        int k = removeElement1(nums, val); // Calls your implementation
+        int k = removeElement2(nums, val); // Calls your implementation
         System.out.println(k);
+    }
+
+    private static int removeElement2(int[] nums, int val) {
+        int begin = 0;
+        int end = nums.length-1;
+
+        while (begin-1<end){
+            if(nums[begin] == val && nums[end] != val) {
+                nums[begin++] = nums[end];
+                nums[end--] = val;
+            }
+            if(nums[begin] != val) begin++;
+            if(nums[end] == val) end--;
+        }
+        return begin;
     }
 
     private static int removeElement1(int[] nums, int val) {
