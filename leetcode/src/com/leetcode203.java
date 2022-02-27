@@ -3,7 +3,7 @@ package com;
 public class leetcode203 {
 
     public static void main(String[] args) {
-        int[] nums = {7,7,1,1,7,7};
+        int[] nums = {7,7,7,7};
         ListNode head = new ListNode();
         for (int n :nums) {
             head = new ListNode(n,head);
