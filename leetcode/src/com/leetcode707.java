@@ -28,75 +28,52 @@ public class leetcode707 {
         }
 
         Node head;
-        Node tail;
         int size = 0;
-        public MyLinkedList() {}
+        public MyLinkedList() {
+            head = new Node(0);
+            size = 0;
+        }
 
         public int get(int index) {
-            if (size<index) return -1;
+            if (index < 0 || index >= size) return -1;
             Node newNode = head;
-            int i = 0;
-            while (newNode != null){
-                if (i == index) return newNode.val;
+            for (int i = 0; i <= index; i++) {
                 newNode = newNode.next;
-                i++;
             }
-            return -1;
-
+            return newNode.val;
         }
 
         public void addAtHead(int val) {
-            if (size == 0){
-                tail = head = new Node(val);
-            }
-            else {
-                head = new Node(val,head);
-            }
-            size++;
+            addAtIndex(0,val);
         }
 
         public void addAtTail(int val) {
-            if (size == 0){
-                tail = head = new Node(val);
-            }
-            else {
-                tail.next = new Node(val);
-                tail = tail.next;
-            }
-            size++;
+            addAtIndex(size,val);
         }
 
         public void addAtIndex(int index, int val) {
-            if (index == size || size==0){
-                addAtTail(val);
-                return;
-            }
+
             if (index>size) return;
+
+            Node pred = head;
             size++;
-            if (index == 0) addAtHead(val);
-            Node newNode = head;
-            for (int i = 0; i < index-1; i++) {
-                newNode = newNode.next;
+            for (int i = 0; i < index; i++) {
+                pred = pred.next;
             }
-            Node add = new Node(val);
-            add.next = newNode.next;
-            newNode.next = add;
+            Node newNode = new Node(val);
+            newNode.next = pred.next;
+            pred.next = newNode;
         }
 
         public void deleteAtIndex(int index) {
             if (index < 0 || index >= size) return;
-
+            Node pred = head;
             size--;
-            if (index == 0){
-                head = head.next;
-                return;
+            for (int i = 0; i < index; i++) {
+                pred = pred.next;
             }
-            Node newNode = head;
-
-            for (int i = 0; i < index-1; i++) {
-                newNode = newNode.next;
-            }
-            newNode.next = newNode.next.next;
+            Node newNode = pred.next.next;
+            pred.next = newNode;
         }
     }
 
